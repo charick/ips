@@ -1,0 +1,84 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>送货清单</title>
+<script language="javascript" src="LodopFuncs.js"></script>
+</head><body><object id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width="0" height="0"> 
+	<embed id="LODOP_EM" type="application/x-print-lodop" width="0" height="0" pluginspage="install_lodop32.exe">
+</object> 
+
+<style type="text/css" id="style">
+.main{
+width:640px;
+}
+.head{
+text-align:center;
+width:100%;
+border:0px solid #000000;
+border-collapse:collapse;
+margin-bottom:10px;
+font-size:12px;
+font-family:microsoft yahei;}
+
+.table{
+margin:auto;
+width:100%;
+border:1px solid #000000;
+border-collapse:collapse;
+}
+.table td{
+border:1px solid #000000;
+border-collapse:collapse;
+    text-align: center;
+    line-height: 16px;
+font-size:12px;
+}
+.buyer{
+    text-align: left;
+    font-size:14px;
+    margin-bottom:5px;
+    font-family:microsoft yahei;
+}
+.foot{
+       margin-top:10px;
+      text-align: center;
+      font-size:14px;
+          font-family:microsoft yahei;
+}
+</style>
+#foreach($invoice in $InvoiceList)
+#set($j=$math.sub($velocityCount,0))
+<div class="main" id=invoice$j>
+$invoice
+</div>
+#end
+<a href="javascript:prn1_preview()">打印预览</a>|<a href="javascript:prn1_print()">直接打印</a>
+<script language="javascript" type="text/javascript">   
+        var LODOP; //声明为全局变量 
+	function prn1_preview() {	
+		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
+		LODOP.PRINT_INIT("打印控件Lodop功能演示_多页预览");
+		LODOP.SET_PRINT_PAGESIZE(1,2100,1400,"");	
+		CreateAllPages();		
+		LODOP.PREVIEW();	
+	};
+	function prn1_print() {		
+		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));  
+		LODOP.PRINT_INIT("打印控件Lodop功能演示_多页预览");
+		LODOP.SET_PRINT_PAGESIZE(1,2100,1400,"");	
+		CreateAllPages();
+		LODOP.PRINT();	
+	};
+
+	function CreateAllPages(){	
+		for (i = 1; i <= $InvoiceList.size(); i++) {
+			LODOP.NewPage();
+		var strBodyStyle="<style>"+document.getElementById("style").innerHTML+"</style>";
+		var strFormHtml=strBodyStyle+"<body>"+document.getElementById("invoice"+i).innerHTML+"</body>";
+		LODOP.ADD_PRINT_HTM(0,50,640,489,strFormHtml);
+		}			
+		
+	};	
+</script> 
+
+
+</body></html>

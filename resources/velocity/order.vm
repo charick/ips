@@ -1,0 +1,48 @@
+<html xmlns=http://www.w3.org/1999/xhtml><head><meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<style type="text/css">
+.main{
+}
+.table,.table td{
+	font-size: 12px;
+    text-align: center;
+    line-height: 24px;
+	border:1px solid #cccccc;
+    border-collapse:collapse;
+}
+
+</style>
+
+<div class="main">
+<table width="750" border="0" class="table">
+<tr>
+    <th>No</th>
+    <th>成交时间</th>
+    <th>状态</th>
+    <th>单号</th>
+	<th>买家</th>
+	<th>商品价格</th>
+	<th>运费</th>
+	<th>省份</th>
+	<th>发货状态</th>
+	<th>签收</th>
+	<th>交易结果</th>
+</tr>
+#foreach( $tradeItem in $allTrades)
+<tr>
+    <td>$velocityCount</td>
+    <td>$!date.format('MM-dd HH:mm',${tradeItem.getPayTime()})</td>
+    <td>${tradeItem.getStatus()}</td>
+    <td>${tradeItem.getTid()}</td>
+    <td>${tradeItem.getBuyerNick()}</td>
+		<td>${tradeItem.getTotalFee()}</td>
+		<td>${tradeItem.getPostFee()}</td>
+		<td>${tradeItem.getReceiverState()}</td>
+		<td>-</td>
+		<td>-</td>
+		<td>-</td>
+
+</tr>
+#end
+
+</table>
+</html>

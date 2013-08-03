@@ -1,0 +1,1 @@
+ java -classpath avalon-framework-4.1.3.jar:commons-logging-1.1.jar:json-20090211.jar:log4j-1.2.12.jar:logkit-1.0.1.jar:servlet-api-2.3.jar:TaobaoListener-1.0-SNAPSHOT.jar:taobao-sdk-java-notify-20130617.jar  Listener

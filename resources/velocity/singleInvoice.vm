@@ -1,0 +1,41 @@
+<table class="head">
+<tr>
+<td colspan="3" style="width:85% ;height:80px;font-size:16px;">趣活宜家代购-送货单</td>
+<td rowspan="2" style="width:15%"><img src="wechat.png"></td>  
+</tr>
+<tr>
+  <td >客户姓名：$receiver</td>
+  <td >淘宝ID：$buyer</td>
+  <td >电话：$tel</td>
+</tr>
+</table>
+<table class="table">
+<thead>
+<tr style="border: 1px #000000 solid;">
+    <th>行号</th>
+    <th>产品编码</th>
+    <th>产品名称</th>
+	<th>产品型号</th>
+    <th>单价</th>
+	<th>数量</th>
+	
+</tr>
+</thead>
+<tbody>
+#foreach( $tradeItem in $tradeItemList)
+<tr>
+    <td>$velocityCount</td>
+    <td>$tradeItem.getId()</td>
+    <td>$tradeItem.getName()$tradeItem.getFacts()</td>
+    <td>$!tradeItem.getType()</td>
+    <td>$tradeItem.getPrice()</td>
+	<td>$tradeItem.getQuantity()</td>
+</tr>
+#end
+</tbody>
+</table>
+<div class="foot">
+请核对清单产品，如有破损请及时联系我们。<br>
+[五星评价]即可以赢取彩票一张，嗯..也许是500万哦!
+</div>
+
